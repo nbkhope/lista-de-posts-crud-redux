@@ -25,3 +25,17 @@ export const fetchPost = (id) => {
     payload: request
   };
 }
+
+export const changePostTitle = (title) => {
+  return {
+    type: 'CHANGE_POST_TITLE',
+    payload: title
+  };
+};
+
+export const changePostBody = (body) => {
+  return {
+    type: 'CHANGE_POST_BODY',
+    payload: body
+  };
+};
