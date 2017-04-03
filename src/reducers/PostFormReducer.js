@@ -5,7 +5,10 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-
+    case 'CHANGE_POST_TITLE':
+      return { ...state, title: action.payload };
+    case 'CHANGE_POST_BODY':
+      return { ...state, body: action.payload };
     default:
       return state;
   }
