@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Coloque os action creators aqui
 
-const REQUEST_URL = 'https://jsonplaceholder.typicode.com';
+const REQUEST_URL = 'https://restful-api-posts.herokuapp.com';
 
 export const fetchPosts = () => {
   // fazer pedido HTTP para obter todos os posts
@@ -37,5 +37,14 @@ export const changePostBody = (body) => {
   return {
     type: 'CHANGE_POST_BODY',
     payload: body
+  };
+};
+
+export const createPost = (post) => {
+  const request = axios.post(`${REQUEST_URL}/posts`, post);
+
+  return {
+    type: 'CREATE_POST',
+    payload: request
   };
 };
