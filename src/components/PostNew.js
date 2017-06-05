@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
 
-import { changePostTitle, changePostBody } from '../actions';
+import { changePostTitle, changePostBody, createPost } from '../actions';
 
 class PostNew extends Component {
   onTitleChange = (title) => {
@@ -14,6 +15,12 @@ class PostNew extends Component {
   onBodyChange = (body) => {
     console.log('Conteudo modificado:', body);
     this.props.changePostBody(body);
+  }
+
+  onOkPress = () => {
+    const { title, body } = this.props;
+    this.props.createPost({ title, body });
+    Actions.list({ type: 'reset' });
   }
 
   render() {
@@ -37,7 +44,7 @@ class PostNew extends Component {
 
         <TouchableOpacity
           style={{ borderWidth: 9, padding: 6, backgroundColor: 'antiquewhite' }}
-          onPress={() => null}
+          onPress={this.onOkPress}
         >
           <Text>OK</Text>
         </TouchableOpacity>
@@ -54,7 +61,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     changePostTitle,
-    changePostBody
+    changePostBody,
+    createPost,
   }, dispatch);
 };
 

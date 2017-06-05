@@ -9,6 +9,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, title: action.payload };
     case 'CHANGE_POST_BODY':
       return { ...state, body: action.payload };
+    case 'CREATE_POST': {
+      console.log(action.payload)
+      // limpar formulario
+      return INITIAL_STATE;
+    }
+
     default:
       return state;
   }
