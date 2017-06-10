@@ -17,6 +17,10 @@ class PostNew extends Component {
     this.props.changePostBody(body);
   }
 
+  onCancelPress = () => {
+    Actions.pop();
+  }
+
   onOkPress = () => {
     const { title, body } = this.props;
     this.props.createPost({ title, body });
@@ -41,6 +45,13 @@ class PostNew extends Component {
           value={this.props.body}
           multiline={true}
         />
+
+        <TouchableOpacity
+          style={{ borderWidth: 9, padding: 6, backgroundColor: 'gray' }}
+          onPress={this.onCancelPress}
+        >
+          <Text>Cancelar</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={{ borderWidth: 9, padding: 6, backgroundColor: 'antiquewhite' }}
