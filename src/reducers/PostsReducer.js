@@ -9,6 +9,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, all: action.payload.data };
     case 'FETCH_POST':
       return { ...state, selected: action.payload.data };
+    case 'CREATE_POST': {
+      const all = [ ...state.all, action.payload.data ];
+      return { ...state, all };
+    }
     default:
       return state;
   }

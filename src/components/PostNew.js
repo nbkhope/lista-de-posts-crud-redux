@@ -20,7 +20,8 @@ class PostNew extends Component {
   onOkPress = () => {
     const { title, body } = this.props;
     this.props.createPost({ title, body });
-    Actions.list({ type: 'reset' });
+    // Actions.list({ type: 'reset' });
+    Actions.pop();
   }
 
   render() {
