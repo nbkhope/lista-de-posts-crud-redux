@@ -14,7 +14,8 @@ export default (state = INITIAL_STATE, action) => {
       // limpar formulario
       return INITIAL_STATE;
     }
-
+    case 'RESET_POST_FORM':
+      return INITIAL_STATE;
     default:
       return state;
   }
