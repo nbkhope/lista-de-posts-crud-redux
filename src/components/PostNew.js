@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 
+import PostForm from './PostForm';
 import { changePostTitle, changePostBody, createPost } from '../actions';
 
 class PostNew extends Component {
@@ -31,34 +32,14 @@ class PostNew extends Component {
     return (
       <View>
         <Text>Tudo legal? Novo post.</Text>
-        <Text style={{ fontWeight: 'bold' }}>Título</Text>
-        <TextInput
-          style={{ height: 40, borderWidth: 4 }}
-          onChangeText={this.onTitleChange}
-          value={this.props.title}
+        <PostForm
+          onTitleChange={this.onTitleChange}
+          onBodyChange={this.onBodyChange}
+          title={this.props.title}
+          body={this.props.body}
+          onCancelPress={this.onCancelPress}
+          onOkPress={this.onOkPress}
         />
-
-        <Text style={{ fontWeight: 'bold' }}>Conteúdo</Text>
-        <TextInput
-          style={{ height: 80, borderWidth: 4 }}
-          onChangeText={this.onBodyChange}
-          value={this.props.body}
-          multiline={true}
-        />
-
-        <TouchableOpacity
-          style={{ borderWidth: 9, padding: 6, backgroundColor: 'gray' }}
-          onPress={this.onCancelPress}
-        >
-          <Text>Cancelar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={{ borderWidth: 9, padding: 6, backgroundColor: 'antiquewhite' }}
-          onPress={this.onOkPress}
-        >
-          <Text>OK</Text>
-        </TouchableOpacity>
       </View>
     );
   }
