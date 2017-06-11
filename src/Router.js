@@ -4,6 +4,7 @@ import { Router, Scene, Actions } from 'react-native-router-flux';
 import List from './components/List';
 import PostDetail from './components/PostDetail';
 import PostNew from './components/PostNew';
+import PostEdit from './components/PostEdit';
 
 const RouterComponent = () => {
   return (
@@ -16,11 +17,22 @@ const RouterComponent = () => {
         onRight={() => Actions.postNew()}
         initial
       />
-      <Scene key="postDetail" component={PostDetail} title="Ver Post" />
+      <Scene
+        key="postDetail"
+        component={PostDetail}
+        title="Ver Post"
+        rightTitle="Editar"
+        onRight={() => Actions.postEdit()}
+      />
       <Scene
         key="postNew"
         component={PostNew}
         title="Novo Post"
+      />
+      <Scene
+        key="postEdit"
+        component={PostEdit}
+        title="Editar Post"
       />
     </Router>
   );
