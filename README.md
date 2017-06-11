@@ -1,4 +1,4 @@
-# Lista de Posts Redux
+# Lista de Posts Redux CRUD
 
 Este projeto foi criado pelo NBK Tutor para o seu curso chamado [**CRUD com o Redux & React Native**](https://www.youtube.com/playlist?list=PLUbb2i4BuuzATHuKoP6BcSHLxnXN4dzj6).
 
