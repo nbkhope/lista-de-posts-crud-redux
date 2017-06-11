@@ -1,6 +1,8 @@
 # Lista de Posts Redux
 
-Este projeto foi criado pelo NBK Tutor para a sua série de vídeo tutoriais chamada [**Introdução ao Redux**](https://www.youtube.com/playlist?list=PLUbb2i4BuuzBP9eD4ZO7J1qxpf4TKNchG).
+Este projeto foi criado pelo NBK Tutor para o seu curso chamado [**CRUD com o Redux & React Native**](https://www.youtube.com/playlist?list=PLUbb2i4BuuzBP9eD4ZO7J1qxpf4TKNchG).
+
+É a continuação do [**Introdução ao Redux**](https://www.youtube.com/playlist?list=PLUbb2i4BuuzBP9eD4ZO7J1qxpf4TKNchG), cujo código original está disponível [neste repositório](https://github.com/nbkhope/lista-de-posts-redux).
 
 ## Instalação
 
