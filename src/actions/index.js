@@ -50,3 +50,21 @@ export const createPost = (post) => {
 };
 
 export const resetPostForm = () => ({ type: 'RESET_POST_FORM' });
+
+export const updatePost = (post, postId) => {
+  const request = axios.put(`${REQUEST_URL}/posts/${postId}`, post);
+
+  return {
+    type: 'UPDATE_POST',
+    payload: request
+  };
+};
+
+export const deletePost = (id) => {
+  const request = axios.delete(`${REQUEST_URL}/posts/${id}`);
+
+  return {
+    type: 'DELETE_POST',
+    payload: request
+  };
+};
