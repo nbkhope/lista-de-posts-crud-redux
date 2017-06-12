@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 import PostForm from './PostForm';
-import { changePostTitle, changePostBody, resetPostForm } from '../actions';
+import {
+  changePostTitle,
+  changePostBody,
+  resetPostForm,
+  updatePost,
+  deletePost
+} from '../actions';
 
 class PostEdit extends Component {
   componentDidMount() {
@@ -22,7 +29,22 @@ class PostEdit extends Component {
 
   onBodyChange = (body) => {
     this.props.changePostBody(body);
-  };
+  }
+
+  onCancelPress = () => {
+    Actions.pop();
+  }
+
+  onOkPress = () => {
+    const { title, body, selectedPost } = this.props;
+    this.props.updatePost({ title, body }, selectedPost.id);
+    Actions.pop();
+  }
+
+  onDeletePress = () => {
+    setTimeout(() => this.props.deletePost(this.props.selectedPost.id), 3000);
+    Actions.list({ type: 'reset' });
+  }
 
   render() {
     return (
@@ -32,9 +54,16 @@ class PostEdit extends Component {
           onBodyChange={this.onBodyChange}
           title={this.props.title}
           body={this.props.body}
-          onCancelPress={() => null}
-          onOkPress={() => undefined}
+          onCancelPress={this.onCancelPress}
+          onOkPress={this.onOkPress}
         />
+
+        <TouchableOpacity
+          style={{ borderWidth: 9, padding: 6, backgroundColor: 'red' }}
+          onPress={this.onDeletePress}
+        >
+          <Text>Deletar Post</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -43,7 +72,9 @@ class PostEdit extends Component {
 const mapDispatchToProps = {
   changePostTitle,
   changePostBody,
-  resetPostForm
+  resetPostForm,
+  updatePost,
+  deletePost
 };
 
 const mapStateToProps = (state) => {
