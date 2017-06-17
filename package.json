@@ -24,5 +24,7 @@
     "jest": "16.0.2",
     "jest-react-native": "16.1.0",
     "react-test-renderer": "15.3.2"
-  }
+  },
+  "author": "nbkhope",
+  "license": "MIT"
 }
