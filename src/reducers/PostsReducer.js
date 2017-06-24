@@ -28,6 +28,8 @@ export default (state = INITIAL_STATE, action) => {
       const all = state.all.concat(action.payload.data);
       return { ...state, all };
     }
+    case 'DESELECT_POST':
+      return { ...state, selected: null };
     default:
       return state;
   }

@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { fetchPost } from '../actions';
+import { fetchPost, deselectPost } from '../actions';
 
 class PostDetail extends Component {
   componentDidMount() {
     this.props.fetchPost(this.props.postId); // precisamos passar o id
+  }
+
+  componentWillUnmount() {
+    this.props.deselectPost();
   }
 
   render() {
@@ -41,4 +45,4 @@ const mapStateToProps = (state) => {
   return { post: state.posts.selected };
 };
 
-export default connect(mapStateToProps, { fetchPost })(PostDetail);
+export default connect(mapStateToProps, { fetchPost, deselectPost })(PostDetail);

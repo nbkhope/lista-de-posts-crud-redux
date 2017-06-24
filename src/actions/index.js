@@ -68,3 +68,5 @@ export const deletePost = (id) => {
     payload: request
   };
 };
+
+export const deselectPost = () => ({ type: 'DESELECT_POST' });
