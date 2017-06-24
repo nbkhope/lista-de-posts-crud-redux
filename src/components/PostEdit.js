@@ -42,7 +42,7 @@ class PostEdit extends Component {
   }
 
   onDeletePress = () => {
-    setTimeout(() => this.props.deletePost(this.props.selectedPost.id), 3000);
+    this.props.deletePost(this.props.selectedPost.id);
     Actions.list({ type: 'reset' });
   }
 

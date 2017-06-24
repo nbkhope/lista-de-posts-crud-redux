@@ -24,7 +24,7 @@ class PostNew extends Component {
 
   onOkPress = () => {
     const { title, body } = this.props;
-    setTimeout(() => this.props.createPost({ title, body }), 3000);
+    this.props.createPost({ title, body });
     Actions.list({ type: 'reset' });
   }
 
