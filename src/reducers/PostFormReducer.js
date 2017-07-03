@@ -1,6 +1,8 @@
 const INITIAL_STATE = {
   title: '',
-  body: ''
+  body: '',
+  titleError: null,
+  bodyError: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,6 +15,10 @@ export default (state = INITIAL_STATE, action) => {
       console.log(action.payload)
       // limpar formulario
       return INITIAL_STATE;
+    }
+    case 'CHANGE_POST_ERROR': {
+      const { field, error } = action.payload;
+      return { ...state, [`${field}Error`]: error };
     }
     case 'RESET_POST_FORM':
       return INITIAL_STATE;
