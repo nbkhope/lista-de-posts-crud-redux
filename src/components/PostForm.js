@@ -3,11 +3,16 @@ import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 
 class PostForm extends Component {
   render() {
+    const inputStyle = { height: 40, borderWidth: 4 };
+    if (this.props.titleError) {
+      inputStyle.backgroundColor = 'red';
+    }
+
     return (
       <View>
         <Text style={{ fontWeight: 'bold' }}>Título</Text>
         <TextInput
-          style={{ height: 40, borderWidth: 4 }}
+          style={inputStyle}
           onChangeText={this.props.onTitleChange}
           value={this.props.title}
         />

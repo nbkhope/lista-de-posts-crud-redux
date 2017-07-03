@@ -5,11 +5,19 @@ import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 
 import PostForm from './PostForm';
-import { changePostTitle, changePostBody, createPost } from '../actions';
+import { changePostTitle, changePostBody, changePostError, createPost } from '../actions';
 
 class PostNew extends Component {
   onTitleChange = (title) => {
     console.log('Titulo modificado:', title);
+    if (title === '') { // inválido
+      console.log('Title esta invalido')
+      this.props.changePostError('title', 'O título não pode estar em branco');
+    }
+    else {
+      this.props.changePostError('title', null);
+    }
+
     this.props.changePostTitle(title);
   }
 
@@ -37,6 +45,7 @@ class PostNew extends Component {
           onBodyChange={this.onBodyChange}
           title={this.props.title}
           body={this.props.body}
+          titleError={this.props.titleError}
           onCancelPress={this.onCancelPress}
           onOkPress={this.onOkPress}
         />
@@ -46,14 +55,15 @@ class PostNew extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { title, body } = state.postForm;
-  return { title, body };
+  const { title, body, titleError, bodyError } = state.postForm;
+  return { title, body, titleError, bodyError };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     changePostTitle,
     changePostBody,
+    changePostError,
     createPost,
   }, dispatch);
 };
