@@ -40,6 +40,13 @@ export const changePostBody = (body) => {
   };
 };
 
+export const changePostError = (field, error) => {
+  return {
+    type: 'CHANGE_POST_ERROR',
+    payload: { field, error }
+  };
+};
+
 export const createPost = (post) => {
   const request = axios.post(`${REQUEST_URL}/posts`, post);
 
