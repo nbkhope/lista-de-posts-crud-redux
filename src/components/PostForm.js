@@ -7,6 +7,10 @@ class PostForm extends Component {
     if (this.props.titleError) {
       inputStyle.backgroundColor = 'red';
     }
+    const inputBodyStyle = { height: 80, borderWidth: 4 };
+    if (this.props.bodyError) {
+      inputBodyStyle.backgroundColor = 'red';
+    }
 
     return (
       <View>
@@ -19,7 +23,7 @@ class PostForm extends Component {
 
         <Text style={{ fontWeight: 'bold' }}>Conteúdo</Text>
         <TextInput
-          style={{ height: 80, borderWidth: 4 }}
+          style={inputBodyStyle}
           onChangeText={this.props.onBodyChange}
           value={this.props.body}
           multiline={true}

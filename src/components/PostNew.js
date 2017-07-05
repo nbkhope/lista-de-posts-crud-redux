@@ -23,6 +23,13 @@ class PostNew extends Component {
 
   onBodyChange = (body) => {
     console.log('Conteudo modificado:', body);
+    if (body === '') {
+      console.log('Conteudo esta invalido')
+      this.props.changePostError('body', 'O conteúdo não pode estar em branco')
+    }
+    else {
+      this.props.changePostError('body', null);
+    }
     this.props.changePostBody(body);
   }
 
@@ -46,6 +53,7 @@ class PostNew extends Component {
           title={this.props.title}
           body={this.props.body}
           titleError={this.props.titleError}
+          bodyError={this.props.bodyError}
           onCancelPress={this.onCancelPress}
           onOkPress={this.onOkPress}
         />
