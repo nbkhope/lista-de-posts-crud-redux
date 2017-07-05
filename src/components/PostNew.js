@@ -10,27 +10,25 @@ import { changePostTitle, changePostBody, changePostError, createPost } from '..
 class PostNew extends Component {
   onTitleChange = (title) => {
     console.log('Titulo modificado:', title);
-    if (title === '') { // inválido
-      console.log('Title esta invalido')
-      this.props.changePostError('title', 'O título não pode estar em branco');
-    }
-    else {
-      this.props.changePostError('title', null);
-    }
+    this.validateField({ name: 'title', value: title, label: 'título' });
 
     this.props.changePostTitle(title);
   }
 
   onBodyChange = (body) => {
     console.log('Conteudo modificado:', body);
-    if (body === '') {
-      console.log('Conteudo esta invalido')
-      this.props.changePostError('body', 'O conteúdo não pode estar em branco')
+    this.validateField({ name: 'body', value: body, label: 'conteúdo' });
+    this.props.changePostBody(body);
+  }
+
+  validateField = (field) => {
+    if (field.value === '') { // inválido
+      console.log(field.name + ' esta invalido')
+      this.props.changePostError(field.name, `O ${field.label} não pode estar em branco`);
     }
     else {
-      this.props.changePostError('body', null);
+      this.props.changePostError(field.name, null);
     }
-    this.props.changePostBody(body);
   }
 
   onCancelPress = () => {
