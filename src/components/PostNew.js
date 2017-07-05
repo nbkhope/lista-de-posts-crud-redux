@@ -5,9 +5,13 @@ import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 
 import PostForm from './PostForm';
-import { changePostTitle, changePostBody, changePostError, createPost } from '../actions';
+import { changePostTitle, changePostBody, changePostError, createPost, resetPostForm } from '../actions';
 
 class PostNew extends Component {
+  componentWillUnmount() {
+    this.props.resetPostForm();
+  }
+
   onTitleChange = (title) => {
     console.log('Titulo modificado:', title);
     this.validateField({ name: 'title', value: title, label: 'título' });
@@ -71,6 +75,7 @@ const mapDispatchToProps = (dispatch) => {
     changePostBody,
     changePostError,
     createPost,
+    resetPostForm,
   }, dispatch);
 };
 
