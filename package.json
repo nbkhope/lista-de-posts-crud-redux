@@ -6,6 +6,10 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "engines": {
+    "node": "6.11.1",
+    "npm": "3.10.10"
+  },
   "dependencies": {
     "axios": "^0.15.2",
     "react": "15.3.2",
