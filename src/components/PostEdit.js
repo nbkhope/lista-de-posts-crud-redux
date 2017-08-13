@@ -7,9 +7,10 @@ import PostForm from './PostForm';
 import {
   changePostTitle,
   changePostBody,
+  changePostError,
   resetPostForm,
   updatePost,
-  deletePost
+  deletePost,
 } from '../actions';
 
 class PostEdit extends Component {
@@ -21,14 +22,6 @@ class PostEdit extends Component {
 
   componentWillUnmount() {
     this.props.resetPostForm();
-  }
-
-  onTitleChange = (title) => {
-    this.props.changePostTitle(title);
-  }
-
-  onBodyChange = (body) => {
-    this.props.changePostBody(body);
   }
 
   onCancelPress = () => {
@@ -50,12 +43,15 @@ class PostEdit extends Component {
     return (
       <View>
         <PostForm
-          onTitleChange={this.onTitleChange}
-          onBodyChange={this.onBodyChange}
           title={this.props.title}
           body={this.props.body}
+          titleError={this.props.titleError}
+          bodyError={this.props.bodyError}
           onCancelPress={this.onCancelPress}
           onOkPress={this.onOkPress}
+          changePostTitle={this.props.changePostTitle}
+          changePostBody={this.props.changePostBody}
+          changePostError={this.props.changePostError}
         />
 
         <TouchableOpacity
@@ -72,6 +68,7 @@ class PostEdit extends Component {
 const mapDispatchToProps = {
   changePostTitle,
   changePostBody,
+  changePostError,
   resetPostForm,
   updatePost,
   deletePost
@@ -81,7 +78,9 @@ const mapStateToProps = (state) => {
   return {
     selectedPost: state.posts.selected,
     title: state.postForm.title,
-    body: state.postForm.body
+    body: state.postForm.body,
+    titleError: state.postForm.titleError,
+    bodyError: state.postForm.bodyError,
   };
 };
 

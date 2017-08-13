@@ -12,29 +12,6 @@ class PostNew extends Component {
     this.props.resetPostForm();
   }
 
-  onTitleChange = (title) => {
-    console.log('Titulo modificado:', title);
-    this.validateField({ name: 'title', value: title, label: 'título' });
-
-    this.props.changePostTitle(title);
-  }
-
-  onBodyChange = (body) => {
-    console.log('Conteudo modificado:', body);
-    this.validateField({ name: 'body', value: body, label: 'conteúdo' });
-    this.props.changePostBody(body);
-  }
-
-  validateField = (field) => {
-    if (field.value === '') { // inválido
-      console.log(field.name + ' esta invalido')
-      this.props.changePostError(field.name, `O ${field.label} não pode estar em branco`);
-    }
-    else {
-      this.props.changePostError(field.name, null);
-    }
-  }
-
   onCancelPress = () => {
     Actions.pop();
   }
@@ -50,14 +27,15 @@ class PostNew extends Component {
       <View>
         <Text>Tudo legal? Novo post.</Text>
         <PostForm
-          onTitleChange={this.onTitleChange}
-          onBodyChange={this.onBodyChange}
           title={this.props.title}
           body={this.props.body}
           titleError={this.props.titleError}
           bodyError={this.props.bodyError}
           onCancelPress={this.onCancelPress}
           onOkPress={this.onOkPress}
+          changePostTitle={this.props.changePostTitle}
+          changePostBody={this.props.changePostBody}
+          changePostError={this.props.changePostError}
         />
       </View>
     );
