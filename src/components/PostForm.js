@@ -40,6 +40,8 @@ class PostForm extends Component {
     if (this.props.bodyError) {
       inputBodyStyle.backgroundColor = 'red';
     }
+    const submitDisabled = !this.canSubmit();
+    const okBackgroundColor = submitDisabled ? 'lightgrey' : 'antiquewhite';
 
     return (
       <View>
@@ -71,9 +73,9 @@ class PostForm extends Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{ borderWidth: 9, padding: 6, backgroundColor: 'antiquewhite' }}
+          style={{ borderWidth: 9, padding: 6, backgroundColor: okBackgroundColor }}
           onPress={this.props.onOkPress}
-          disabled={!this.canSubmit()}
+          disabled={submitDisabled}
         >
           <Text>OK</Text>
         </TouchableOpacity>
